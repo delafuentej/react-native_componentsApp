@@ -1,23 +1,29 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable prettier/prettier */
 
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { globalStyles } from '../../../config/theme/globalStyles';
 import { Title } from '../../components/ui/Title';
+import { MenuItem } from '../../components/ui/MenuItem';
 
-export const menuItems = [
-  // 01-animationMenuItems
-  {
-    name: 'Animation 101',
-    icon: 'cube-outline',
-    component: 'Animation101Screen',
-  },
-  {
-    name: 'Animation 102',
-    icon: 'albums-outline',
-    component: 'Animation102Screen',
-  },
 
+const animationMenuItems = [
+    // 01-animationMenuItems
+    {
+      name: 'Animation 101',
+      icon: 'cube-outline',
+      component: 'Animation101Screen',
+    },
+    {
+      name: 'Animation 102',
+      icon: 'albums-outline',
+      component: 'Animation102Screen',
+    },
+  
+  
+];
+
+ const menuItems = [
 
   // 02-menuItems
   {
@@ -50,8 +56,10 @@ export const menuItems = [
     icon: 'flask-outline',
     component: 'ChangeThemeScreen',
   },
+];
 
-  // 03- uiMenuItems
+const uiMenuItems = [
+    // 03- uiMenuItems
   {
     name: 'Switches',
     icon: 'toggle-outline',
@@ -76,8 +84,36 @@ export const HomeScreen = () => {
           <ScrollView>
             <Title text="HomeScreen" safe/>
             {
-              menuItems.map((item , index)=> <Text key={index}>{item.name}</Text>)
+              //{...item} =  name={name} icon={icon} component={component}
+              animationMenuItems.map((item,index)=> <MenuItem 
+                                          key={index} 
+                                          {...item}
+                                          isFirst={index === 0}
+                                          isLast={ index === menuItems.length-1}
+                                          />)
             }
+
+{
+              //{...item} =  name={name} icon={icon} component={component}
+              menuItems.map((item,index)=> <MenuItem 
+                                          key={index} 
+                                          {...item}
+                                          isFirst={index === 0}
+                                          isLast={ index === menuItems.length-1}
+                                          />)
+            }
+
+{
+              //{...item} =  name={name} icon={icon} component={component}
+              uiMenuItems.map((item,index)=> <MenuItem 
+                                          key={index} 
+                                          {...item}
+                                          isFirst={index === 0}
+                                          isLast={ index === menuItems.length-1}
+                                          />)
+            }
+
+
           </ScrollView>
 
         </View>
