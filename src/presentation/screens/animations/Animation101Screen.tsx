@@ -2,47 +2,20 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable prettier/prettier */
 
-import {  StyleSheet, View, Animated, Easing} from 'react-native';
+import {  StyleSheet, View, Animated} from 'react-native';
 import { Title } from '../../components/ui/Title';
 import { colors } from '../../../config/theme/globalStyles';
 import { Button } from '../../components/ui/Button';
-import { useRef } from 'react';
+import { useAnimation } from '../../hooks/useAnimation';
+
 
 export const Animation101Screen = () => {
-    const animatedOpacity = useRef( new Animated.Value(0)).current;
-    const animatedTop = useRef( new Animated.Value(-150)).current;
-   
-    // const animatedTransparent = useRef( new Animated.Value(1)).current;
-
-    const fadeIn = ()=>{
-
-        Animated.timing( animatedTop, {
-            toValue:0,
-            duration: 2000,
-            useNativeDriver: true,
-            easing: Easing.bounce,/* Easing.elastic(2), */
-        }).start(()=> console.log('animation top ended'));
-
-        Animated.timing( animatedOpacity, {
-            toValue: 1,
-            duration: 2000,
-            useNativeDriver: true,
-        }).start(()=> console.log('animation fadeion ended'));
-    };
-
-    const fadeOut = () =>{
-        Animated.timing( animatedOpacity, {
-            toValue: 0,
-            duration: 2000,
-            useNativeDriver: true,
-        }).start(()=> animatedTop.resetAnimation());
-
-    };
+        const {animatedOpacity, animatedTop, fadeIn, fadeOut, movementToTop} = useAnimation();
   return (
     <>
          <Title text='Animation 101'/>
          <View style={styles.container}>
-            <Animated.View 
+            <Animated.View
                 style={[
                     styles.purpleBox, {
                     opacity: animatedOpacity,
@@ -59,8 +32,11 @@ export const Animation101Screen = () => {
             /> */}
 
 
-           <Button onPress={fadeIn} text='Fade-In' />
-           <Button onPress={fadeOut} text='Fade-Out' />
+           <Button onPress={() =>{
+            fadeIn({}),
+            movementToTop({initialPosition: -1000});
+           }} text='Fade-In' />
+           <Button onPress={() =>fadeOut({})} text='Fade-Out' />
         </View>
 
     
