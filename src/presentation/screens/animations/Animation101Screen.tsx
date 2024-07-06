@@ -2,7 +2,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable prettier/prettier */
 
-import {  StyleSheet, View, Animated} from 'react-native';
+import {  StyleSheet, View, Animated, Easing} from 'react-native';
 import { Title } from '../../components/ui/Title';
 import { colors } from '../../../config/theme/globalStyles';
 import { Button } from '../../components/ui/Button';
@@ -10,9 +10,19 @@ import { useRef } from 'react';
 
 export const Animation101Screen = () => {
     const animatedOpacity = useRef( new Animated.Value(0)).current;
+    const animatedTop = useRef( new Animated.Value(-150)).current;
+   
     // const animatedTransparent = useRef( new Animated.Value(1)).current;
 
     const fadeIn = ()=>{
+
+        Animated.timing( animatedTop, {
+            toValue:0,
+            duration: 2000,
+            useNativeDriver: true,
+            easing: Easing.bounce,/* Easing.elastic(2), */
+        }).start(()=> console.log('animation top ended'));
+
         Animated.timing( animatedOpacity, {
             toValue: 1,
             duration: 2000,
@@ -25,7 +35,8 @@ export const Animation101Screen = () => {
             toValue: 0,
             duration: 2000,
             useNativeDriver: true,
-        }).start(()=> console.log('animation fadeout ended'));
+        }).start(()=> animatedTop.resetAnimation());
+
     };
   return (
     <>
@@ -35,6 +46,9 @@ export const Animation101Screen = () => {
                 style={[
                     styles.purpleBox, {
                     opacity: animatedOpacity,
+                    transform:[{
+                        translateY: animatedTop,
+                    }],
                 }]}
             />
               {/* <Animated.View 
@@ -55,7 +69,7 @@ export const Animation101Screen = () => {
   );
 };
 
-const styles= StyleSheet.create({
+const styles = StyleSheet.create({
     container:{
         flex:1,
         alignItems:'center',
