@@ -19,8 +19,6 @@ const animationMenuItems = [
       icon: 'albums-outline',
       component: 'Animation102Screen',
     },
-  
-  
 ];
 
  const menuItems = [
@@ -85,31 +83,33 @@ export const HomeScreen = () => {
             <Title text="HomeScreen" safe/>
             {
               //{...item} =  name={name} icon={icon} component={component}
-              animationMenuItems.map((item,index)=> <MenuItem 
-                                          key={index} 
+              animationMenuItems.map((item,index)=> <MenuItem
+                                          key={index}
                                           {...item}
                                           isFirst={index === 0}
-                                          isLast={ index === menuItems.length-1}
+                                          isLast={ index === menuItems.length - 1}
                                           />)
             }
+            <View style={{marginTop: 20}}/>
 
-{
+            {
               //{...item} =  name={name} icon={icon} component={component}
-              menuItems.map((item,index)=> <MenuItem 
-                                          key={index} 
+              menuItems.map((item,index)=> <MenuItem
+                                          key={index}
                                           {...item}
                                           isFirst={index === 0}
-                                          isLast={ index === menuItems.length-1}
+                                          isLast={ index === menuItems.length - 1}
                                           />)
             }
+             <View style={{marginTop: 20}}/>
 
-{
+          {
               //{...item} =  name={name} icon={icon} component={component}
-              uiMenuItems.map((item,index)=> <MenuItem 
-                                          key={index} 
+              uiMenuItems.map((item,index)=> <MenuItem
+                                          key={index}
                                           {...item}
                                           isFirst={index === 0}
-                                          isLast={ index === menuItems.length-1}
+                                          isLast={ index === menuItems.length - 1}
                                           />)
             }
 

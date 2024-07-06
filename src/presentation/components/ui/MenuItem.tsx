@@ -22,7 +22,7 @@ export const MenuItem = ({name, icon, component, isFirst = false, isLast = false
 
   return (
     <Pressable
-        onPress={()=>{}}
+        onPress={()=>navigation.navigate(component)}
     >
         <View style={{
             ...styles.container,
@@ -35,7 +35,6 @@ export const MenuItem = ({name, icon, component, isFirst = false, isLast = false
         <Icon name='chevron-forward-outline' size={25} style={{marginLeft: 'auto'}} color={colors.primary}/>
 
         </View>
-       
     </Pressable>
   );
 };
