@@ -61,7 +61,7 @@ const uiMenuItems = [
   {
     name: 'Switches',
     icon: 'toggle-outline',
-    component: 'SwitchScreen',
+    component: 'SwitchesScreen',
   },
   {
     name: 'Alerts',
