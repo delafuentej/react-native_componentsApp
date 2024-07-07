@@ -7,12 +7,13 @@ import { Title } from '../../components/ui/Title';
 import { colors } from '../../../config/theme/globalStyles';
 import { Button } from '../../components/ui/Button';
 import { useAnimation } from '../../hooks/useAnimation';
+import { CustomView } from '../../components/ui/CustomView';
 
 
 export const Animation101Screen = () => {
         const {animatedOpacity, animatedTop, fadeIn, fadeOut, movementToTop} = useAnimation();
   return (
-    <>
+    <CustomView margin>
          <Title text='Animation 101'/>
          <View style={styles.container}>
             <Animated.View
@@ -40,7 +41,7 @@ export const Animation101Screen = () => {
         </View>
 
     
-    </>
+    </CustomView>
     
   );
 };

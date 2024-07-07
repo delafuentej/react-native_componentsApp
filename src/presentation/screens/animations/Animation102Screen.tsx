@@ -7,6 +7,7 @@ import {  Animated, PanResponder, StyleSheet, View } from 'react-native';
 import { Title } from '../../components/ui/Title';
 import { useRef } from 'react';
 import { colors } from '../../../config/theme/globalStyles';
+import { CustomView } from '../../components/ui/CustomView';
 
 
 export const Animation102Screen = () => {
@@ -35,7 +36,7 @@ export const Animation102Screen = () => {
     });
 
   return (
-    <>
+    <CustomView margin>
         <Title text='Animation102Screen'/>
         <View style={styles.container}>
             <Animated.View 
@@ -45,7 +46,7 @@ export const Animation102Screen = () => {
 
 
         </View>
-    </>
+    </CustomView>
   );
 };
 
