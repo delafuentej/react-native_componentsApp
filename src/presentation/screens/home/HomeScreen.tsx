@@ -87,7 +87,7 @@ export const HomeScreen = () => {
                                           key={index}
                                           {...item}
                                           isFirst={index === 0}
-                                          isLast={ index === menuItems.length - 1}
+                                          isLast={ index === animationMenuItems.length - 1}
                                           />)
             }
             <View style={{marginTop: 20}}/>
@@ -109,7 +109,7 @@ export const HomeScreen = () => {
                                           key={index}
                                           {...item}
                                           isFirst={index === 0}
-                                          isLast={ index === menuItems.length - 1}
+                                          isLast={ index === uiMenuItems.length - 1}
                                           />)
             }
 

@@ -3,7 +3,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 
 import { StyleProp, View, ViewStyle } from 'react-native';
-import { colors, globalStyles } from '../../../config/theme/globalStyles';
+import { colors } from '../../../config/theme/globalStyles';
 
 interface Props {
     style?: StyleProp<ViewStyle>;
