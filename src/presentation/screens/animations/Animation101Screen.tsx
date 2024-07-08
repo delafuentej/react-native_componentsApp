@@ -4,25 +4,34 @@
 
 import {  StyleSheet, View, Animated} from 'react-native';
 import { Title } from '../../components/ui/Title';
-import { colors } from '../../../config/theme/globalStyles';
 import { Button } from '../../components/ui/Button';
 import { useAnimation } from '../../hooks/useAnimation';
 import { CustomView } from '../../components/ui/CustomView';
+import { ThemeContext } from '../../context/ThemeContext';
+import { useContext } from 'react';
 
 
 export const Animation101Screen = () => {
+        const {colors} = useContext(ThemeContext);
         const {animatedOpacity, animatedTop, fadeIn, fadeOut, movementToTop} = useAnimation();
+      
   return (
-    <CustomView margin>
+    <CustomView
+        style={styles.container}
+        margin>
          <Title text='Animation 101'/>
          <View style={styles.container}>
             <Animated.View
                 style={[
                     styles.purpleBox, {
+                    backgroundColor: colors.primary,
+                    },
+                    {
                     opacity: animatedOpacity,
                     transform:[{
                         translateY: animatedTop,
-                    }],
+                    },
+                ],
                 }]}
             />
               {/* <Animated.View 
@@ -33,11 +42,13 @@ export const Animation101Screen = () => {
             /> */}
 
 
-           <Button onPress={() =>{
+           <Button
+                styles={{marginTop: 10}}
+                onPress={() =>{
             fadeIn({}),
             movementToTop({initialPosition: -1000});
            }} text='Fade-In' />
-           <Button onPress={() =>fadeOut({})} text='Fade-Out' />
+           <Button styles={{marginTop: 10}} onPress={() =>fadeOut({})} text='Fade-Out' />
         </View>
 
     
@@ -53,7 +64,6 @@ const styles = StyleSheet.create({
         justifyContent:'center',
     },
     purpleBox: {
-        backgroundColor: colors.primary,
         width:100,
         height:100,
     },

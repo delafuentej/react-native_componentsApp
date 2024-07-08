@@ -6,11 +6,14 @@
 import {  Animated, PanResponder, StyleSheet, View } from 'react-native';
 import { Title } from '../../components/ui/Title';
 import { useRef } from 'react';
-import { colors } from '../../../config/theme/globalStyles';
 import { CustomView } from '../../components/ui/CustomView';
+import { colors } from '../../../config/theme/globalStyles';
+
 
 
 export const Animation102Screen = () => {
+
+
     const pan = useRef( new Animated.ValueXY()).current;
     
     const panResponser = PanResponder.create({
@@ -36,7 +39,9 @@ export const Animation102Screen = () => {
     });
 
   return (
-    <CustomView margin>
+    <CustomView 
+        style={styles.container}
+        margin>
         <Title text='Animation102Screen'/>
         <View style={styles.container}>
             <Animated.View 

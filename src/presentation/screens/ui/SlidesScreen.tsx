@@ -4,11 +4,11 @@
 /* eslint-disable prettier/prettier */
 import {FlatList, ImageSourcePropType, NativeScrollEvent, NativeSyntheticEvent, Text, View} from 'react-native';
 import { Title } from '../../components/ui/Title';
-import { colors } from '../../../config/theme/globalStyles';
 import { SlideItem } from '../../components/ui/SlideItem';
 import { Button } from '../../components/ui/Button';
-import { useState, useRef} from 'react';
+import { useState, useRef, useContext} from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { ThemeContext } from '../../context/ThemeContext';
 
 
 export interface Slide {
@@ -36,6 +36,7 @@ export interface Slide {
   ];
 
 export const SlidesScreen = () => {
+    const {colors} = useContext(ThemeContext);
     const[ currentSlideIndex, setCurrentSlideIndex ] = useState(0);
     const flatListRef = useRef<FlatList>(null);
     const navigation = useNavigation();
@@ -51,6 +52,7 @@ export const SlidesScreen = () => {
     };
 
     const scrollToSlide = (index: number) =>{
+    
         if (!flatListRef.current) return;
         
         flatListRef.current.scrollToIndex({
@@ -74,7 +76,7 @@ export const SlidesScreen = () => {
         />
         { currentSlideIndex === items.length - 1 ? (
             <Button 
-                text='End'
+                text='Go back'
                 styles={{position: 'absolute', bottom:60, right: 30, width: 100}}
                 onPress={()=>navigation.goBack()}
             />

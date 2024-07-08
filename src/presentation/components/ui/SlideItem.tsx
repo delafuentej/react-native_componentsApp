@@ -2,19 +2,23 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable prettier/prettier */
 
-import { Text, View, useWindowDimensions } from 'react-native';
+import { Text, useWindowDimensions } from 'react-native';
 import { Slide } from '../../screens/ui/SlidesScreen';
 import { Image } from 'react-native';
-import { colors, globalStyles } from '../../../config/theme/globalStyles';
+import { globalStyles } from '../../../config/theme/globalStyles';
+import { ThemeContext } from '../../context/ThemeContext';
+import { useContext } from 'react';
+import { CustomView } from './CustomView';
 
 interface Props {
     item: Slide
 }
 export const SlideItem = ({item}: Props) => {
+    const { colors } = useContext(ThemeContext);
     const { width } = useWindowDimensions();
     const {title, desc, img} = item;
   return (
-    <View style={{
+    <CustomView style={{
         flex:1,
         width: width,
         backgroundColor: 'white',
@@ -36,6 +40,6 @@ export const SlideItem = ({item}: Props) => {
             color: colors.text,
             marginTop: 20,
         }}>{desc}</Text>
-    </View>
+    </CustomView>
   );
 };

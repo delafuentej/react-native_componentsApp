@@ -2,15 +2,16 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable prettier/prettier */
 
-import { StyleProp, Text, View, ViewStyle } from 'react-native';
-import { colors } from '../../../config/theme/globalStyles';
-import { PropsWithChildren } from 'react';
+import { StyleProp, View, ViewStyle } from 'react-native';
+import { PropsWithChildren, useContext } from 'react';
+import { ThemeContext } from '../../context/ThemeContext';
 
 interface Props extends PropsWithChildren{
     style?: StyleProp<ViewStyle>;
 
 }
 export const Card = ({style, children}:Props) => {
+  const {colors} = useContext(ThemeContext);
   return (
     <View style={[
         {

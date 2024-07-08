@@ -8,16 +8,18 @@ import { useState } from 'react';
 import { Card } from '../../components/ui/Card';
 import { CustomSwitch } from '../../components/ui/CustomSwitch';
 import { Separator } from '../../components/ui/Separator';
+import { ThemeContext } from '../../context/ThemeContext';
 
 
 export const SwitchesScreen = () => {
     // const [isEnabled, setIsEnabled] = useState(false);
     // const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+    
     const [state, setState] = useState({
         isActive: true,
         isHandsome: false,
         isHappy: true,
-    })
+    });
 
   return (
     <CustomView style={{marginTop: 100, paddingHorizontal:10}}>

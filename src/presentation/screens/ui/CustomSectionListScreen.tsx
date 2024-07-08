@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable prettier/prettier */
@@ -7,9 +8,10 @@ import { Title } from '../../components/ui/Title';
 import { CustomView } from '../../components/ui/CustomView';
 import { Card } from '../../components/ui/Card';
 import { Subtitle } from '../../components/ui/Subtitle';
-import { colors } from '../../../config/theme/globalStyles';
 import { Separator } from '../../components/ui/Separator';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useContext } from 'react';
+import { ThemeContext } from '../../context/ThemeContext';
 
 interface Houses {
     title: string;
@@ -94,6 +96,7 @@ interface Houses {
   ];
 
 export const CustomSectionListScreen = () => {
+    const {colors} = useContext(ThemeContext);
     const {height} = useWindowDimensions();
     const {top} = useSafeAreaInsets();
 
@@ -107,6 +110,7 @@ export const CustomSectionListScreen = () => {
                 renderSectionHeader={({section})=> <Subtitle
                                                    text={section.title}
                                                    backgroundColor={colors.cardBackground}
+                                                
                                                 />}
                 renderItem= {({item})=> <Text style={{marginVertical: 2}}>{item}</Text>}
 

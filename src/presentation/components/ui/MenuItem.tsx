@@ -5,10 +5,11 @@
 /* eslint-disable prettier/prettier */
 
 import { Pressable, View,  StyleSheet, Text} from 'react-native';
-import { colors } from '../../../config/theme/globalStyles';
 import  Icon  from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { Separator } from './Separator';
+import { useContext } from 'react';
+import { ThemeContext } from '../../context/ThemeContext';
 interface Props {
     name: string,
     icon: string,
@@ -18,7 +19,9 @@ interface Props {
     isLast: boolean,
 }
 export const MenuItem = ({name, icon, component, isFirst = false, isLast = false}: Props) => {
+
     const navigation = useNavigation<any>();
+    const {colors} = useContext(ThemeContext);
     // eslint-disable-next-line no-trailing-spaces
 
   return (
