@@ -4,8 +4,9 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable prettier/prettier */
 
-import { PropsWithChildren, createContext, useState } from 'react';
+import { PropsWithChildren, createContext, useEffect, useState } from 'react';
 import { ThemeColors, darkColors, lightColors } from "../../config/theme/globalStyles";
+import { useColorScheme } from 'react-native';
 
 type ThemeColor = 'light' | 'dark';
 
@@ -20,7 +21,20 @@ interface ThemeContextProps {
 export const ThemeContext = createContext({} as ThemeContextProps);
 
 export const ThemeProvider = ({children}:PropsWithChildren) =>{
+    // ios - SO THEME from react-native
+    const colorScheme = useColorScheme();
+
+
     const[ currentTheme, setCurrentTheme ] = useState<ThemeColor>('light');
+
+    // ios - SO THEME from react-native
+    useEffect(()=>{
+       if (colorScheme === 'dark'){
+        setCurrentTheme('dark');
+       }else{
+        setCurrentTheme('light');
+       }
+    },[colorScheme]);
 
     const setTheme = (theme: ThemeColor) => {
         setCurrentTheme(theme);
